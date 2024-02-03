@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import data from "@/utils/data";
+import AddToCart from "@/components/products/addToCart";
 
 const ProductDetails = ({ params }: { params: { slug: string } }) => {
   const product = data.products.find((item) => item.slug === params.slug);
@@ -8,9 +9,9 @@ const ProductDetails = ({ params }: { params: { slug: string } }) => {
     return <div>no data found</div>;
   }
   return (
-    <div className="bg-green-200 container">
-      <div className="md:grid md:grid-cols-4">
-        <div className="md:col-span-2 bg-red-200">
+    <div className="container p-4">
+      <div className="md:grid md:grid-cols-4 gap-2">
+        <div className="md:col-span-2">
           <Image
             src={product.image}
             alt={product.name}
@@ -30,12 +31,10 @@ const ProductDetails = ({ params }: { params: { slug: string } }) => {
           </ul>
         </div>
         <div className="md:col-span-1">
-          <div className="card bg-base-300">
-            <div className="card-body">
-              <div className="flex justify-between">
-                <p>price</p>
-                <p>₹{product.price}</p>
-              </div>
+          <div className="card bg-base-300 p-6 flex flex-col gap-2">
+            <div className="flex justify-between">
+              <p>price</p>
+              <p>₹{product.price}</p>
             </div>
             <div className="flex justify-between">
               <div>status</div>
@@ -44,7 +43,7 @@ const ProductDetails = ({ params }: { params: { slug: string } }) => {
               </div>
             </div>
             <div className="flex justify-center">
-              <button className="btn">add to cart</button>
+              <AddToCart item={product} />
             </div>
           </div>
         </div>

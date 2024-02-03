@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import CartList from "./cartList";
 
 const Header = () => {
   return (
@@ -9,7 +10,9 @@ const Header = () => {
       </Link>
       <ul className="flex gap-2">
         <li>
-          <Link href="/cart">Cart</Link>
+          <Link href="/cart">
+            <CartList />
+          </Link>
         </li>
         <li>
           <Link href="/Sign In">Sign In</Link>
